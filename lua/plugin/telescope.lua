@@ -37,71 +37,69 @@ local function display_path(_, path)
 	end
 end
 
-
 telescope.setup({
-        defaults = {
-                prompt_prefix = " ",
-                selection_caret = " ",
-                path_display = display_path,
-                selection_strategy = "reset",
-                sorting_strategy = "ascending",
-                layout_strategy = "horizontal",
-                layout_config = {
-                        horizontal = {
-                                promp_position = "top",
-                                preview_width = 0.5,
-                                result_width = 0.8,
-                        },
-                        vertical = {
-                                mirror = false,
-                        },
-                        width = 0.87,
-                        height = 0.80,
-                        preview_cutoff = 120,
-                },
-        },
-        file_sorter = require("telescope.sorters").get_fuzzy_file,
-        file_ignore_patterns = { "node_modules", ".git/", "dist/", "build/" },
-        winblend = 0,
-        border = {},
-        borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-        color_devicons = true,
-        use_less = true,
-        set_env = { ["COLORTERM"] = "truecolor" },
-        file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-        grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-        qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-        buffer_preview_maker = require("telescope.previewers").buffer_previewer_maker,
-        extensions = {
-                fzf = {
-                        fuzzy = true,
-                        override_generic_sorter = true,
-                        override_file_sorter = true,
-                        case_mode = "smart_case",
-                },
-        },
-        pickers = {
-                find_files = {
-                        find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
-                },
-                live_grep = {
-                        addtional_args = function()
-                                return { "--hidden" }
-                        end
-                },
-                buffers = {
-                        show_all_buffers = true,
-                        sort_lastused = true,
-                        mappings = {
-                                i = {
-                                        ["<C-d>"] = actions.delete_buffer,
-                                },
-                                n = {
-                                        ["dd"] = actions.delete_buffer,
-                                },
-                        },
-                },
-        },
+	defaults = {
+		prompt_prefix = " ",
+		selection_caret = " ",
+		path_display = display_path,
+		selection_strategy = "reset",
+		sorting_strategy = "ascending",
+		layout_strategy = "horizontal",
+		layout_config = {
+			horizontal = {
+				promp_position = "top",
+				preview_width = 0.5,
+				result_width = 0.8,
+			},
+			vertical = {
+				mirror = false,
+			},
+			width = 0.87,
+			height = 0.80,
+			preview_cutoff = 120,
+		},
+		borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+	},
+	file_sorter = require("telescope.sorters").get_fuzzy_file,
+	file_ignore_patterns = { "node_modules", ".git/", "dist/", "build/" },
+	winblend = 0,
+	color_devicons = true,
+	use_less = true,
+	set_env = { ["COLORTERM"] = "truecolor" },
+	file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+	grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+	qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+	buffer_preview_maker = require("telescope.previewers").buffer_previewer_maker,
+	extensions = {
+		fzf = {
+			fuzzy = true,
+			override_generic_sorter = true,
+			override_file_sorter = true,
+			case_mode = "smart_case",
+		},
+	},
+	pickers = {
+		find_files = {
+			find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+		},
+		live_grep = {
+			addtional_args = function()
+				return { "--hidden" }
+			end,
+		},
+		buffers = {
+			show_all_buffers = true,
+			sort_lastused = true,
+			mappings = {
+				i = {
+					["<C-d>"] = actions.delete_buffer,
+				},
+				n = {
+					["dd"] = actions.delete_buffer,
+				},
+			},
+		},
+	},
 })
 
 telescope.load_extension("fzf")
@@ -112,18 +110,19 @@ telescope.load_extension("live_grep_args")
 local builtin = require("telescope.builtin")
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
-vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep",opts)
+vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
 vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts)
 vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts)
 vim.keymap.set("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", opts)
 vim.keymap.set("n", "<leader>fm", "<cmd>Telescope marks<CR>", opts)
 vim.keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<CR>", opts)
 vim.keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<CR>", opts)
+vim.keymap.set("n", "<leader>fz", "<cmd>Telescope lsp_document_symbols<CR>", opts)
 vim.keymap.set("n", "<leader>/", function()
-        builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-                previewer = false,
-                layout_config = { width = 0.7 },
-        }))
+	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+		previewer = false,
+		layout_config = { width = 0.7 },
+	}))
 end, opts)
 vim.keymap.set("n", "<leader>gf", "<cmd>Telescope git_files<CR>", opts)
 vim.keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", opts)

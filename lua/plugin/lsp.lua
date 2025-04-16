@@ -8,17 +8,17 @@ vim.fn.sign_define("DiagnosticSignInfo", { text = "ℹ", texthl = "DiagnosticSig
 
 -- Configure diagnostic
 vim.diagnostic.config({
-        virtual_text = true,
-        signs = true,
-        underline = true,
-        update_in_insert = false,
-        severity_sort = true,
-        float = {
-                border = "solid",
-                source = true,
-                header = "",
-                prefix = "",
-        },
+	virtual_text = true,
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
+	float = {
+		border = "solid",
+		source = true,
+		header = "",
+		prefix = "",
+	},
 })
 
 -- Mapping diagnostics
@@ -30,68 +30,97 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Set loc li
 -- Use LspAttach autocmd to only map the following keys after the language server attaches to the current buffer.
 local telescope_builtin = require("telescope.builtin")
 vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-        callback = function(ev)
-                vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+	callback = function(ev)
+		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-                local opts = { buffer = ev.buf }
-                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-                vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
-                vim.keymap.set("n", "gd", telescope_builtin.lsp_definitions, opts)
-                vim.keymap.set("n", "gr", telescope_builtin.lsp_references, opts)
-                vim.keymap.set("n", "gi", telescope_builtin.lsp_implementations, opts)
-                vim.keymap.set("n", "<leader>ls", telescope_builtin.lsp_document_symbols, opts)
-                vim.keymap.set("n", "<leader>lw", telescope_builtin.lsp_workspace_symbols, opts)
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-                vim.keymap.set("n", "grn", vim.lsp.buf.rename, opts)
-                vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
-        end,
+		local opts = { buffer = ev.buf }
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+		vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
+		vim.keymap.set("n", "gd", telescope_builtin.lsp_definitions, opts)
+		vim.keymap.set("n", "gr", telescope_builtin.lsp_references, opts)
+		vim.keymap.set("n", "gi", telescope_builtin.lsp_implementations, opts)
+		vim.keymap.set("n", "<leader>ls", telescope_builtin.lsp_document_symbols, opts)
+		vim.keymap.set("n", "<leader>lw", telescope_builtin.lsp_workspace_symbols, opts)
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+		vim.keymap.set("n", "grn", vim.lsp.buf.rename, opts)
+		vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+	end,
 })
 
+-- local document_hover = vim.lsp.with(vim.lsp.handlers.hover, {
+-- 	border = "single", -- You can use: 'single', 'double', 'rounded', 'solid', 'shadow', 'none'
+-- })
+--
+-- -- If you're also using signature help, you can configure it similarly
+-- local document_signature_help = vim.lsp.with(vim.lsp.handlers.signature_help, {
+-- 	border = "single",
+-- })
+
+local border = {
+	{ "┌", "FloatBorder" },
+	{ "─", "FloatBorder" },
+	{ "┐", "FloatBorder" },
+	{ "│", "FloatBorder" },
+	{ "┘", "FloatBorder" },
+	{ "─", "FloatBorder" },
+	{ "└", "FloatBorder" },
+	{ "│", "FloatBorder" },
+}
+
+-- Add the border on hover and on signature help popup window
+local handlers = {
+	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+}
+
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3B3F40" })
 
 -- Configure language servers
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Lua
 lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-        settings = {
-                Lua = {
-                        runtime = {
-                                version = "LuaJIT",
-                        },
-                        diagnostics = {
-                                globals = { "vim" }
-                        },
-                        workspace = {
-                                library = vim.api.nvim_get_runtime_file("", true),
-                                checkThirdParty = false,
-                        },
-                        telemetry = {
-                                enable = false,
-                        },
-                },
-        },
+	capabilities = capabilities,
+	settings = {
+		Lua = {
+			runtime = {
+				version = "LuaJIT",
+			},
+			diagnostics = {
+				globals = { "vim" },
+			},
+			workspace = {
+				library = vim.api.nvim_get_runtime_file("", true),
+				checkThirdParty = false,
+			},
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
+	handlers = handlers,
 })
 
 -- Go
 lspconfig.gopls.setup({
-        capabilities = capabilities,
-        settings = {
-                gopls = {
-                        hints = {
-                                assignVariableTypes = true,
-                                compositeLiteralFields = true,
-                                compositeLiteralTypes = true,
-                                constantValues = true,
-                                functionTypeParameters = true,
-                                parameterNames = true,
-                                rangeVariableTypes = true,
-                        },
-                        semanticTokens = true,
-                        experimentalPostfixCompletions = true,
-                        experimentalWorkspaceModule = true,
-                        gofumpt = true,
-                }
-        }
+	capabilities = capabilities,
+	settings = {
+		gopls = {
+			hints = {
+				assignVariableTypes = true,
+				compositeLiteralFields = true,
+				compositeLiteralTypes = true,
+				constantValues = true,
+				functionTypeParameters = true,
+				parameterNames = true,
+				rangeVariableTypes = true,
+			},
+			semanticTokens = true,
+			experimentalPostfixCompletions = true,
+			experimentalWorkspaceModule = true,
+			gofumpt = true,
+		},
+	},
+	handlers = handlers,
 })

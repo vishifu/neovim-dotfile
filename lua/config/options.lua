@@ -9,6 +9,7 @@ vim.g.maplocalleader = " "
 -- number
 opt.nu = true
 opt.rnu = true
+opt.nuw = 6
 
 -- tab, indent
 opt.tabstop = 2
@@ -40,3 +41,5 @@ opt.isfname:append("@-@")
 
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
+
+opt.timeoutlen = 500
