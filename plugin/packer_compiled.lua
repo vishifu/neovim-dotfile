@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/vishifu/.cache/nvim/packer_hererocks/2.1.1736781742/share/lua/5.1/?.lua;/Users/vishifu/.cache/nvim/packer_hererocks/2.1.1736781742/share/lua/5.1/?/init.lua;/Users/vishifu/.cache/nvim/packer_hererocks/2.1.1736781742/lib/luarocks/rocks-5.1/?.lua;/Users/vishifu/.cache/nvim/packer_hererocks/2.1.1736781742/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/vishifu/.cache/nvim/packer_hererocks/2.1.1736781742/lib/lua/5.1/?.so"
+local package_path_str = "/Users/vishifu/.cache/nvim/packer_hererocks/2.1.1744318430/share/lua/5.1/?.lua;/Users/vishifu/.cache/nvim/packer_hererocks/2.1.1744318430/share/lua/5.1/?/init.lua;/Users/vishifu/.cache/nvim/packer_hererocks/2.1.1744318430/lib/luarocks/rocks-5.1/?.lua;/Users/vishifu/.cache/nvim/packer_hererocks/2.1.1744318430/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/vishifu/.cache/nvim/packer_hererocks/2.1.1744318430/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -144,6 +144,11 @@ _G.packer_plugins = {
     path = "/Users/vishifu/.local/share/nvim/site/pack/packer/start/diffview.nvim",
     url = "https://github.com/sindrets/diffview.nvim"
   },
+  ["fidget.nvim"] = {
+    loaded = true,
+    path = "/Users/vishifu/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    url = "https://github.com/j-hui/fidget.nvim"
+  },
   fzf = {
     loaded = true,
     path = "/Users/vishifu/.local/share/nvim/site/pack/packer/start/fzf",
@@ -158,6 +163,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/vishifu/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  ["gruvbox.nvim"] = {
+    loaded = true,
+    path = "/Users/vishifu/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
   ["indent-blankline.nvim"] = {
     loaded = true,
@@ -184,10 +194,15 @@ _G.packer_plugins = {
     path = "/Users/vishifu/.local/share/nvim/site/pack/packer/start/lush.nvim",
     url = "https://github.com/rktjmp/lush.nvim"
   },
+  ["makeit.nvim"] = {
+    loaded = true,
+    path = "/Users/vishifu/.local/share/nvim/site/pack/packer/start/makeit.nvim",
+    url = "https://github.com/Zeioth/makeit.nvim"
+  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/Users/vishifu/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
-    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+    url = "https://github.com/mason-org/mason-lspconfig.nvim"
   },
   ["mason-nvim-dap.nvim"] = {
     loaded = true,
@@ -197,7 +212,7 @@ _G.packer_plugins = {
   ["mason.nvim"] = {
     loaded = true,
     path = "/Users/vishifu/.local/share/nvim/site/pack/packer/start/mason.nvim",
-    url = "https://github.com/williamboman/mason.nvim"
+    url = "https://github.com/mason-org/mason.nvim"
   },
   ["mini.cursorword"] = {
     loaded = true,
@@ -223,6 +238,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/vishifu/.local/share/nvim/site/pack/packer/start/mini.surround",
     url = "https://github.com/echasnovski/mini.surround"
+  },
+  ["mini.tabline"] = {
+    loaded = true,
+    path = "/Users/vishifu/.local/share/nvim/site/pack/packer/start/mini.tabline",
+    url = "https://github.com/echasnovski/mini.tabline"
   },
   ["neo-tree.nvim"] = {
     loaded = true,
@@ -264,6 +284,11 @@ _G.packer_plugins = {
     path = "/Users/vishifu/.local/share/nvim/site/pack/packer/start/nvim-dap-go",
     url = "https://github.com/leoluz/nvim-dap-go"
   },
+  ["nvim-dap-lldb"] = {
+    loaded = true,
+    path = "/Users/vishifu/.local/share/nvim/site/pack/packer/start/nvim-dap-lldb",
+    url = "https://github.com/julianolf/nvim-dap-lldb"
+  },
   ["nvim-dap-ui"] = {
     loaded = true,
     path = "/Users/vishifu/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
@@ -303,6 +328,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/vishifu/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
+  },
+  ["overseer.nvim"] = {
+    loaded = true,
+    path = "/Users/vishifu/.local/share/nvim/site/pack/packer/start/overseer.nvim",
+    url = "https://github.com/stevearc/overseer.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,

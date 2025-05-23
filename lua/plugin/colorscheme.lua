@@ -33,4 +33,16 @@ local use_darcula_theme = function()
 	vim.cmd.colorscheme("darcula-dark")
 end
 
-use_darcula_theme()
+local use_darcula_solid_theme = function()
+	vim.cmd.colorscheme("darcula-solid")
+end
+
+local use_gruvbox = function()
+	require("gruvbox").setup({
+		transparent_mode = true,
+	})
+
+	vim.cmd.colorscheme("gruvbox")
+end
+
+use_gruvbox()

@@ -8,7 +8,7 @@ require("packer").startup(function(use)
 	-- Format file
 	use({ "stevearc/conform.nvim" })
 
-	-- Colors, schemes
+	-- Colors
 	use("sainnhe/sonokai")
 	use({ "projekt0n/github-nvim-theme" })
 	use({
@@ -32,6 +32,7 @@ require("packer").startup(function(use)
 			"rktjmp/lush.nvim",
 		},
 	})
+	use("ellisonleao/gruvbox.nvim")
 
 	-- Indent
 	use({
@@ -55,6 +56,7 @@ require("packer").startup(function(use)
 			"nvim-tree/nvim-web-devicons",
 		},
 	})
+	use("echasnovski/mini.tabline")
 	use("nvim-treesitter/nvim-treesitter")
 	use("nvim-treesitter/nvim-treesitter-textobjects")
 
@@ -75,6 +77,7 @@ require("packer").startup(function(use)
 	use("echasnovski/mini.surround")
 	use("echasnovski/mini.cursorword")
 	use("echasnovski/mini.indentscope")
+	use("j-hui/fidget.nvim")
 
 	-- Helper
 	use({
@@ -86,8 +89,8 @@ require("packer").startup(function(use)
 	use("folke/which-key.nvim")
 
 	-- Languages, LSP, ...
-	use("williamboman/mason.nvim")
-	use("williamboman/mason-lspconfig.nvim")
+	use("mason-org/mason.nvim")
+	use("mason-org/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
 	use("MysticalDevil/inlay-hints.nvim")
 
@@ -130,6 +133,7 @@ require("packer").startup(function(use)
 	})
 
 	use("leoluz/nvim-dap-go")
+	use("julianolf/nvim-dap-lldb")
 
 	use({
 		"nvim-neotest/neotest",
@@ -147,5 +151,10 @@ require("packer").startup(function(use)
 	use("sindrets/diffview.nvim")
 	use("kdheepak/lazygit.nvim", {
 		requires = { "nvim-lua/plenary.nvim" },
+	})
+
+	use("stevearc/overseer.nvim")
+	use("Zeioth/makeit.nvim", {
+		requires = { "stevearc/overseer.nvim" },
 	})
 end)
