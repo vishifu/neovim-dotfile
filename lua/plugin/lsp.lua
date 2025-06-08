@@ -1,14 +1,32 @@
 local lspconfig = require("lspconfig")
 local vim = vim
 
+-- Configure diagnostic
+vim.diagnostic.config({
+	virtual_text = true,
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
+	float = {
+		border = "solid",
+		source = true,
+		header = "",
+		prefix = "",
+	},
+	signs = {
+		active = true,
+		text = {
+			[vim.diagnostic.severity.ERROR] = "✘",
+			[vim.diagnostic.severity.WARN] = "▲",
+			[vim.diagnostic.severity.HINT] = "⚑",
+			[vim.diagnostic.severity.INFO] = "ℹ",
+		},
+	},
+})
+
 -- Define diagnostic highlight groups using Lua API
 vim.api.nvim_set_hl(0, "DiagnosticFullLineError", { bg = "#3f1d1d", bold = false, italic = false, underline = false })
 vim.api.nvim_set_hl(0, "DiagnosticFullLineWarn", { bg = "#3f331d", bold = false, italic = false, underline = false })
-
--- Disable virtual text (optional but recommended for cleaner look)
-vim.diagnostic.config({
-	virtual_text = false,
-})
 
 -- Create namespace for our diagnostics
 local ns_id = vim.api.nvim_create_namespace("diagnostic_full_line")
@@ -57,21 +75,6 @@ vim.api.nvim_create_autocmd({ "DiagnosticChanged", "BufEnter", "WinScrolled" }, 
 	callback = function()
 		vim.schedule(apply_full_line_highlights)
 	end,
-})
-
--- Configure diagnostic
-vim.diagnostic.config({
-	virtual_text = true,
-	signs = true,
-	underline = true,
-	update_in_insert = false,
-	severity_sort = true,
-	float = {
-		border = "solid",
-		source = true,
-		header = "",
-		prefix = "",
-	},
 })
 
 -- Mapping diagnostics
@@ -153,57 +156,4 @@ lspconfig.lua_ls.setup({
 		},
 	},
 	handlers = handlers,
-})
-
--- Go
-lspconfig.gopls.setup({
-	capabilities = capabilities,
-	settings = {
-		gopls = {
-			hints = {
-				assignVariableTypes = true,
-				compositeLiteralFields = true,
-				compositeLiteralTypes = true,
-				constantValues = true,
-				functionTypeParameters = true,
-				parameterNames = true,
-				rangeVariableTypes = true,
-			},
-			semanticTokens = true,
-			experimentalPostfixCompletions = true,
-			gofumpt = true,
-		},
-	},
-	handlers = handlers,
-})
-
--- Clang
-lspconfig.clangd.setup({
-	capabilities = capabilities,
-	cmd = {
-		"clangd",
-		"--background-index",
-		"--suggest-missing-includes",
-		"--clang-tidy",
-		"--header-insertion=iwyu",
-	},
-	filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-	root_dir = require("lspconfig").util.root_pattern(
-		".clangd",
-		".clang-tidy",
-		".clang-format",
-		"compile_commands.json",
-		"compile_flags.txt",
-		"configure.ac",
-		".git"
-	),
-	init_options = {
-		usePlaceholders = true,
-		completeUnimported = true,
-		clangdFileStatus = true,
-	},
-})
-
-lspconfig.markdown_oxide.setup({
-	capabilities = capabilities,
 })

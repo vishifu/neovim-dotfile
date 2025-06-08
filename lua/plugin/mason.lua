@@ -7,8 +7,9 @@ require("mason-lspconfig").setup({
 		"jsonls",
 		"gopls",
 		"clangd",
-		"pylsp",
 		"sqlls",
+		"bashls",
+		"pyright",
 	},
 	ui = {
 		icons = {

@@ -6,6 +6,7 @@ require("nvim-treesitter.configs").setup({
 		"c",
 		"json",
 		"go",
+		"python",
 	},
 	sync_install = false,
 	auto_install = true,

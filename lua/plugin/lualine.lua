@@ -1,7 +1,7 @@
 require("lualine").setup({
 	options = {
 		icon_enabled = true,
-		theme = "gruvbox",
+		theme = "onedark",
 		component_separators = "|",
 		section_separatprs = "|",
 	},

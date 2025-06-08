@@ -40,6 +40,14 @@ end
 local use_gruvbox = function()
 	require("gruvbox").setup({
 		transparent_mode = true,
+		bold = false,
+		italic = {
+			strings = false,
+			emphasis = true,
+			comments = true,
+			operators = false,
+			folds = false,
+		},
 	})
 
 	vim.cmd.colorscheme("gruvbox")
