@@ -1,3 +1,4 @@
+local vim = vim
 local mapkey = vim.keymap.set
 
 -- navigation panel
@@ -6,8 +7,8 @@ mapkey("n", "<C-j>", "<C-w>j", { remap = true, desc = "Goto down panel" })
 mapkey("n", "<C-k>", "<C-w>k", { remap = true, desc = "Goto up panel" })
 mapkey("n", "<C-l>", "<C-w>l", { remap = true, desc = "Goto right panel" })
 
-mapkey("n", "<C-S-Right>", "<cmd>:vertical resize -2<cr>", { desc = "Minimize window" })
-mapkey("n", "<C-S-Left>", "<cmd>:vertical resize +2<cr>", { desc = "Maximize window" })
+mapkey("n", "<C-S-h>", "<cmd>:vertical resize +2<cr>", { desc = "Minimize window" })
+mapkey("n", "<C-S-l>", "<cmd>:vertical resize -2<cr>", { desc = "Maximize window" })
 
 -- clear hight result
 mapkey("n", "<CR>", ":noh <CR><CR>", { noremap = true, silent = true, desc = "Clear highlight result" })

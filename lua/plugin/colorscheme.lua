@@ -51,6 +51,7 @@ local use_gruvbox = function()
 	})
 
 	vim.cmd.colorscheme("gruvbox")
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3B3F40" })
 end
 
 use_gruvbox()

@@ -7,9 +7,8 @@ Implements 4 methods:
   get_current_full_method_name(delimiter) - return a full method name (package + class + [delimiter] + method name)
 --]]
 
-local ts_utils = require("nvim-treesitter.ts_utils")
-
 local vim = vim
+local ts_utils = require("nvim-treesitter.ts_utils")
 local M = {}
 
 -- Find nodes by type
