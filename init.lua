@@ -1,5 +1,6 @@
 require("core.options")
 require("core.keybindings")
 require("core.autocmd")
+require("core.fold")
 require("core.lazy")
 require("core.lsp")
