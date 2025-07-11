@@ -15,8 +15,8 @@ mapkey("n", "<leader>vh", "<cmd>:split <cr>", { remap = true, desc = "Split pane
 
 
 -- resize panel
-mapkey("n", "<C-S-h>", "<cmd>:vertical resize +2<cr>", { desc = "Minimize panel" })
-mapkey("n", "<C-S-l>", "<cmd>:vertical resize -2<cr>", { desc = "Maximize panel" })
+mapkey("n", "<C-S-h>", "<cmd>:vertical resize -2<cr>", { desc = "Minimize panel" })
+mapkey("n", "<C-S-l>", "<cmd>:vertical resize +2<cr>", { desc = "Maximize panel" })
 
 -- clear hight result
 mapkey("n", "<CR>", ":noh <cr><cr>", { noremap = true, silent = true, desc = "Clear highlight result" })
