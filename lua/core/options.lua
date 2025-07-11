@@ -1,6 +1,5 @@
 -- Configuration for global options in Neovim
 
-local vim = vim
 local opt = vim.opt
 
 -- remap leader

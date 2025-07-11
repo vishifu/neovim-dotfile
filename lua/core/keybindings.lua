@@ -1,6 +1,5 @@
 -- Configure vanilla keybindings
 
-local vim = vim
 local mapkey = vim.keymap.set
 
 -- navigation panel
