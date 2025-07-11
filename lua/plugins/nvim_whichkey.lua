@@ -16,6 +16,8 @@ return {
       {
         mode = { "n", "v" },
         { "<leader>e", group = "explorer" },
+        { "<leader>f", group = "Telescope find" },
+        { "<leader>g", group = "Telescope git" },
       },
     },
   },
