@@ -7,9 +7,9 @@ return {
 			ensure_installed = {
 				"lua-language-server",
 				"stylua",
-			}
+			},
 		},
-		config = function (_, opts)
+		config = function(_, opts)
 			require("mason").setup({
 				ui = {
 					border = "single",
@@ -26,7 +26,7 @@ return {
 						if not p:is_installed() then
 							vim.notify("Mason: installing " .. tool .. "...", vim.log.levels.INFO)
 
-							p:install():once("closed", function ()
+							p:install():once("closed", function()
 								if p:is_installed() then
 									vim.notify("Mason: install " .. tool .. " succeeds!", vim.log.levels.INFO)
 								else
@@ -45,6 +45,6 @@ return {
 			else
 				ensure_installed()
 			end
-		end
+		end,
 	},
 }

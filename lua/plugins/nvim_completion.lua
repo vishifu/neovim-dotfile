@@ -13,9 +13,9 @@ return {
 			sources = {
 				{ name = "nvim_lsp" },
 				{ name = "buffer", keyword_length = 3 },
-				{ name = "path", keyword_length = 3 }
+				{ name = "path", keyword_length = 3 },
 			},
-			preselect= cmp.PreselectMode.None,
+			preselect = cmp.PreselectMode.None,
 			mapping = {
 				["<cr>"] = cmp.mapping.confirm({
 					select = true,
@@ -51,7 +51,7 @@ return {
 
 					return item
 				end,
-			}
+			},
 		})
-	end
+	end,
 }

@@ -6,5 +6,5 @@ return {
 			format = nil,
 			tabpage_section = "left",
 		})
-	end
+	end,
 }
