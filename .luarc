@@ -1,0 +1,8 @@
+{
+	 "globals": {
+		 "vim": "table"
+	 },
+	 "types": {
+		 "vim": "vim"
+	 }
+ }

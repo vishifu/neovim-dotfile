@@ -86,8 +86,8 @@ return {
     })
 
     -- Test notification after setup
-    vim.defer_fn(function()
-      vim.notify("Fidget is working!", vim.log.levels.INFO, { title = "Fidget Test" })
-    end, 1000)
+    -- vim.defer_fn(function()
+    --   vim.notify("Fidget is working!", vim.log.levels.INFO, { title = "Fidget Test" })
+    -- end, 1000)
   end,
 }

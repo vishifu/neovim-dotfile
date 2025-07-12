@@ -29,6 +29,12 @@ return {
   config = function()
     keymaps()
 
-    require("spectre").setup({})
+    require("spectre").setup({
+      default = {
+        replace = {
+          cmd = "sed",
+        },
+      },
+    })
   end,
 }

@@ -6,7 +6,6 @@ local opt = vim.opt
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-
 -- show number (relative, width)
 opt.nu = true
 opt.rnu = true
@@ -48,3 +47,5 @@ opt.fileencoding = "utf-8"
 opt.updatetime = 50
 opt.conceallevel = 2
 opt.isfname:append("@-@")
+
+opt.guifont = "RobotoMono Nerd Font Mono:h16"

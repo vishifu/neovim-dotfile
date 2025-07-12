@@ -25,6 +25,22 @@ local function keymaps()
   bindkey("n", "<leader>gs", "<cmd>Telescope git_status <cr>", "Telescope git status")
 end
 
+local function override_lsp_keymaps()
+  local bindkey = require("utils.util").bind_noremap
+  local builtin = require("telescope.builtin")
+
+  bindkey("n", "gD", vim.lsp.buf.declaration, "Goto declaration")
+  bindkey("n", "gt", vim.lsp.buf.type_definition, "Goto type definition")
+  bindkey("n", "gd", builtin.lsp_definitions, "Goto definition")
+  bindkey("n", "gr", builtin.lsp_references, "Goto references")
+  bindkey("n", "gi", builtin.lsp_implementations, "Goto implementations")
+  bindkey("n", "<leader>ls", builtin.lsp_document_symbols, "Show document symbols")
+  bindkey("n", "<leader>lw", builtin.lsp_workspace_symbols, "Show workspace symbols")
+  bindkey("n", "K", vim.lsp.buf.hover, "Hover document")
+  bindkey("n", "grn", vim.lsp.buf.rename, "Rename symbol")
+  bindkey({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
+end
+
 return {
   "nvim-telescope/telescope.nvim",
   tag = "0.1.8",
@@ -108,5 +124,6 @@ return {
     telescope.load_extension("live_grep_args")
 
     keymaps()
+    override_lsp_keymaps()
   end,
 }
