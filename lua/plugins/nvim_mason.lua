@@ -13,6 +13,8 @@ return {
         "clangd",
         "codelldb",
         "clang-format",
+        -- java
+        "jdtls",
       },
     },
     config = function(_, opts)
@@ -52,5 +54,11 @@ return {
         ensure_installed()
       end
     end,
+  },
+  {
+    "mfussenegger/nvim-jdtls",
+    event = { "VeryLazy" },
+    opts = {},
+    config = function() end,
   },
 }

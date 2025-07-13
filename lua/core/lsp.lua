@@ -7,6 +7,7 @@ local vim = vim
 vim.lsp.enable({
   "lua-ls",
   "clangd",
+  "jdtls",
 })
 
 vim.lsp.set_log_level("off")
