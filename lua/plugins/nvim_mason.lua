@@ -15,6 +15,9 @@ return {
         "clang-format",
         -- java
         "jdtls",
+        "java-test",
+        "java-debug-adapter",
+        "groovy-language-server",
       },
     },
     config = function(_, opts)

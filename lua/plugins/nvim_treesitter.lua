@@ -17,6 +17,7 @@ return {
       ensure_installed = {
         "bash",
         "c",
+        "cpp",
         "javascript",
         "lua",
         "luadoc",
@@ -26,6 +27,7 @@ return {
         "vimdoc",
         "yaml",
         "json",
+        "java",
       },
       incremental_selection = {
         enable = true,

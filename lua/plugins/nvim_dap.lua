@@ -35,6 +35,26 @@ return {
           disconnect = "⏏",
         },
       },
+      layouts = {
+        {
+          elements = {
+            { id = "breakpoints", size = 0.2 },
+            { id = "stacks", size = 0.2 },
+            { id = "watches", size = 0.4 },
+            { id = "scopes", size = 0.2 },
+          },
+          position = "left",
+          size = 60,
+        },
+        {
+          elements = {
+            { id = "console", size = 0.5 },
+            { id = "repl", size = 0.5 },
+          },
+          position = "bottom",
+          size = 10,
+        },
+      },
     })
 
     -- Automatically open/close DAP UI
@@ -109,6 +129,11 @@ return {
       bindkey("n", "<leader>dbm", function()
         dap.set_breakpoint(nil, nil, vim.fn.input("Log message: "))
       end, "DAP breakpoint log message!")
+      bindkey("n", "<leader>di", function()
+        require("dap.ui.widgets").hover()
+      end, "Dap variables")
+      bindkey("n", "<leader>df", "<cmd>Telescope dap frames<cr>", "List frames")
+      bindkey("n", "<leader>dh", "<cmd>Telescope dap commands<cr>", "List commands")
     end
 
     setup_dap_signs()

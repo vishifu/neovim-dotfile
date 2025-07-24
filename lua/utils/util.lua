@@ -16,14 +16,14 @@ local function opts(desc, nowait)
 end
 
 -- bindings noremap
-function M.bind_noremap(mode, lhs, rhs, desc)
-  local opts = opts(desc, true)
+function M.bind_noremap(mode, lhs, rhs, desc, nowait)
+  local opts = opts(desc, nowait)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 -- binding noremap into buffer
-function M.bind_buf_noremap(mode, lhs, rhs, bufnr, desc)
-  local opts = bufopts(bufnr, desc, true)
+function M.bind_buf_noremap(mode, lhs, rhs, bufnr, desc, nowait)
+  local opts = bufopts(bufnr, desc, nowait)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 

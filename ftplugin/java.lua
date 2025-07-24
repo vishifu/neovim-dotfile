@@ -32,6 +32,17 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = vim.fn.stdpath("data") .. "/site/java/workspace-root/" .. project_name
 os.execute("mkdir -p " .. workspace_dir)
 
+local function get_bundle()
+  local bundles = {
+    vim.fn.glob(
+      "~/javauser/java-debug-0.53.1/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.53.1.jar"
+    ),
+  }
+
+  vim.list_extend(bundles, vim.split(vim.fn.glob("~/javauser/vscode-java-test-0.43.1/server/*.jar", 1), "\n"))
+  return bundles
+end
+
 -- Main Config
 local config = {
   -- The command that starts the language server
@@ -140,8 +151,16 @@ local config = {
     allow_incremental_sync = true,
   },
   init_options = {
-    bundles = {},
+    bundles = get_bundle(),
   },
+  on_attach = function(client, bufnr)
+    require("jdtls").setup_dap({})
+    require("dap.ext.vscode").load_launchjs()
+
+    local bindkey = require("utils.util").bind_buf_noremap
+    bindkey("n", "<leader>vc", jdtls.test_class, bufnr, "DAP Test class")
+    bindkey("n", "<leader>vm", jdtls.test_nearest_method, bufnr, "DAP Test method")
+  end,
 }
 
 -- This starts a new client & server,
