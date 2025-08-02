@@ -8,7 +8,6 @@ return {
         -- lua
         "lua-language-server",
         "stylua",
-        "luacheck",
         -- clang
         "clangd",
         "codelldb",
@@ -17,7 +16,6 @@ return {
         "jdtls",
         "java-test",
         "java-debug-adapter",
-        "groovy-language-server",
       },
     },
     config = function(_, opts)

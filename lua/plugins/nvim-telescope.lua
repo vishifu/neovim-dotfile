@@ -81,7 +81,7 @@ return {
       file_ignore_patterns = { "node_modules", ".git/", "dist/", "build/" },
       file_sorter = require("telescope.sorters").get_fuzzy_file,
       winblend = 0,
-      color_devicons = true,
+      --color_devicons = true,
       use_less = true,
       set_env = { ["COLORTERM"] = "truecolor" },
       file_previewer = require("telescope.previewers").vim_buffer_cat.new,
